@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
