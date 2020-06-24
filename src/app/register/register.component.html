@@ -1,7 +1,7 @@
 <div class="register">
   <h1 class="center">Register</h1>
   <form [formGroup]="registerForm">
-    <section>
+    <div>
       Username<br />
       <mat-form-field>
         <mat-label>Enter Username</mat-label>
@@ -11,9 +11,9 @@
           formControlName="username"
         />
       </mat-form-field>
-    </section>
+    </div>
 
-    <section>
+    <div>
       Password<br />
       <mat-form-field>
         <mat-label>Enter Password</mat-label>
@@ -23,9 +23,9 @@
           formControlName="password"
         />
       </mat-form-field>
-    </section>
+    </div>
 
-    <section>
+    <div>
       Repeat Password<br />
       <mat-form-field>
         <mat-label>Enter Repeat Password</mat-label>
@@ -35,9 +35,9 @@
           formControlName="repeatPassword"
         />
       </mat-form-field>
-    </section>
+    </div>
 
-    <section>
+    <div>
       Fullname
       <mat-form-field>
         <mat-label>Enter Fullname</mat-label>
@@ -47,33 +47,41 @@
           formControlName="fullname"
         />
       </mat-form-field>
-    </section>
+    </div>
 
-    <section>
+    <div>
       E-mail<br />
       <mat-form-field>
         <mat-label>Enter E-mail</mat-label>
         <input matInput placeholder="Enter E-mail" formControlName="email" />
       </mat-form-field>
-    </section>
+    </div>
 
-    <section>
+    <div>
       Adress<br />
       <mat-form-field>
         <mat-label>Enter Address</mat-label>
         <input matInput placeholder="Enter Adress" formControlName="address" />
       </mat-form-field>
-    </section>
+    </div>
 
-    <section>
+    <div formGroupName="phones">
       Phone<br />
-      <mat-form-field>
-        <mat-label>Enter Phone</mat-label>
-        <input matInput placeholder="Enter Phone" formControlName="phone" />
-      </mat-form-field>
-    </section>
+      <div
+        *ngFor="let phone of phoneInputs.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <mat-form-field>
+          <mat-label>Enter Phone</mat-label>
+          <input matInput placeholder="Enter Phone" formControlName="line" />
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="addPhone()">
+        add Phone Number
+      </button>
+    </div>
 
-    <button mat-raised-button color="primary" >Register</button>
+    <button mat-raised-button color="primary" (click)="Form()">Register</button>
     <button mat-button color="primary" [routerLink]="['/login']">
       Login
     </button>

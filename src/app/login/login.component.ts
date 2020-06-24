@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    localStorage.setItem('authen', 'test');
+    localStorage.setItem('authen', 'console.log(this.loginForm.value)');
+    localStorage.setItem('bb', 'test');
   }
 
   createForm() {
@@ -28,5 +29,9 @@ export class LoginComponent implements OnInit {
 
   submit() {
     console.log(this.loginForm.value);
+  }
+
+  saveMy() {
+    localStorage.setItem('author', JSON.stringify(this.loginForm.value));
   }
 }
