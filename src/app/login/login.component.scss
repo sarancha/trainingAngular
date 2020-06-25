@@ -1,6 +1,6 @@
 .login {
   margin: auto;
-  width: 15%;
+  width: 150px;
   border: medium solid #4b0082;
   padding: 10px;
 }
@@ -10,6 +10,11 @@
   padding-top: 10px;
   text-align: center;
 }
+
 button {
+  width: 100%;
+}
+
+mat-form-field {
   width: 100%;
 }

@@ -33,20 +33,20 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  Form() {
-    if (localStorage.getItem('authen') === null) {
-      var string = localStorage.getItem('authen');
-    } else {
-      localStorage.setItem('authen', JSON.stringify(this.registerForm.value));
-    }
+  setLocalStorage() {
+    let authenArr = JSON.parse(localStorage.getItem('authen')) || [];
+    //console.log(newLength);
+    authenArr.push(this.registerForm.value);
+    localStorage.setItem('authen', JSON.stringify(authenArr));
   }
 
   get phoneInputs() {
     return this.registerForm.get('phones') as FormArray;
   }
+
   addPhone() {
     const phone = this.formBuilder.group({
-      line: [],
+      line: [, Validators.minLength(9), Validators.maxLength(10)],
     });
     this.phoneInputs.push(phone);
     //console.log(this.phoneInputs);
