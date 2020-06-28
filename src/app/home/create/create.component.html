@@ -1,0 +1,37 @@
+<div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>List Articles</span>
+      <span class="example-spacer"></span>
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+<div class="form">
+  <form [formGroup]="form">
+    <div>
+      Title<br />
+      <mat-form-field>
+        <mat-label>Enter Title</mat-label>
+        <input matInput placeholder="Enter Title" formControlName="title" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      Content<br />
+      <mat-form-field>
+        <mat-label>Enter Content</mat-label>
+        <input matInput placeholder="Enter Content" formControlName="content" />
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
+</div>

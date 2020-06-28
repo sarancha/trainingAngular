@@ -21,6 +21,7 @@
           matInput
           placeholder="Enter Password"
           formControlName="password"
+          type="password"
         />
       </mat-form-field>
     </div>
@@ -33,6 +34,7 @@
           matInput
           placeholder="Enter Repeat Password"
           formControlName="repeatPassword"
+          type="password"
         />
       </mat-form-field>
     </div>
@@ -73,7 +75,7 @@
       >
         <mat-form-field>
           <mat-label>Enter Phone</mat-label>
-          <input matInput placeholder="Enter Phone" formControlName="line" />
+          <input matInput placeholder="0123456789" formControlName="line"/>
         </mat-form-field>
         <button mat-button color="warn" (click)="deletePhone(i)">
           Delete Phone Number

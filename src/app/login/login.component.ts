@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,6 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   title = 'Modal Login Form';
 
   loginForm: FormGroup;
@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    localStorage.setItem('authen', 'console.log(this.loginForm.value)');
-    localStorage.setItem('bb', 'test');
   }
 
   createForm() {
@@ -32,6 +30,15 @@ export class LoginComponent implements OnInit {
   }
 
   saveMy() {
-    localStorage.setItem('author', JSON.stringify(this.loginForm.value));
+    const user = JSON.parse(localStorage.getItem('authen'));
+    if (user.filter((user) => this.loginForm.get('user'))) {
+      console.log('OK');
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Passwords Don't Match",
+      });
+    }
   }
 }
