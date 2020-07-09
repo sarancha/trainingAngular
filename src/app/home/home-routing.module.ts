@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
-import { UpdateComponent } from './update/update.component';
 import { ShowComponent } from './show/show.component';
+import { EditComponent } from './edit/edit.component';
 
 
 const routes: Routes = [
@@ -23,8 +23,8 @@ const routes: Routes = [
         component: ShowComponent,
       },
       {
-        path: 'update',
-        component: UpdateComponent,
+        path: 'edit/:title',
+        component: EditComponent,
       },
     ],
   },

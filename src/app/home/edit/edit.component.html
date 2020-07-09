@@ -4,18 +4,11 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['/home/list']">
-        Home
-      </button>
-      <button mat-menu-item [routerLink]="['/home/create']">
-        Create Article
-      </button>
+      <button mat-menu-item [routerLink]="['/home/list']">Home</button>
       <button mat-menu-item>Log Out</button>
     </mat-menu>
-
-    <span>Show Article</span>
+    <span>Edit Article</span>
     <span class="example-spacer"></span>
-
     <button
       mat-icon-button
       class="example-icon favorite-icon"
@@ -36,12 +29,4 @@
   </mat-toolbar>
 </div>
 
-<div class="padding">
-  <b>Title : </b>{{ show.title }}
-  <br />
-  <b>Content : </b>{{ show.content }}
-  <br />
-  <br />
-  <button class="buttongreen" [routerLink]="['/home/edit', show.title]">Edit</button>
-  <button class="buttonred" (click)="deleteArticle(show)">Delete</button>
-</div>
+<app-form [value]="article" [isDisabled]="isDisabled" (summitted)="onSubmit($event)"></app-form>

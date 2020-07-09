@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router, ActivatedRoute } from '@angular/router';
+import { article } from 'src/app/Model/article';
 
 @Component({
   selector: 'app-create',
@@ -7,18 +9,23 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
-  form : FormGroup;
+  article: any;
+  isDisabled = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit(): void {
-    this.createForm();
-  }
+  ngOnInit(): void {}
 
-  createForm() {
-    this.form = this.formBuilder.group({
-      title: ['', Validators.required],
-      content: ['', Validators.required],
+  async onSubmit(article: article) {
+    const articlesArr = JSON.parse(localStorage.getItem('article')) || [];
+    await articlesArr.push(article);
+    localStorage.setItem('article', JSON.stringify(articlesArr));
+    Swal.fire({
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500,
     });
+    this.router.navigate(['/home/list']);
   }
 }

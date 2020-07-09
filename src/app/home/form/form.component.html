@@ -1,0 +1,31 @@
+<div class="form">
+  <form [formGroup]="form">
+    <div>
+      <b> Title : </b>
+      <mat-form-field>
+        <mat-label>Enter Title</mat-label>
+        <input matInput placeholder="Enter Title" formControlName="title" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <b> Content : </b>
+      <mat-form-field>
+        <mat-label>Enter Content</mat-label>
+        <textarea
+          matInput
+          placeholder="Enter Content"
+          formControlName="content"
+          type="container"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="warn" [routerLink]="['/home/list']">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Submit
+    </button>
+  </form>
+</div>

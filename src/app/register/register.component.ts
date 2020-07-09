@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
 
   addPhone() {
     const phone = this.formBuilder.group({
-      line: [, [Validators.minLength(9), Validators.maxLength(10), Validators.pattern('[0-9 ]')]],
+      line: [, [Validators.minLength(9), Validators.maxLength(10), Validators.pattern('[0-9]*')]],
     });
     this.phoneInputs.push(phone);
     //console.log(this.phoneInputs);

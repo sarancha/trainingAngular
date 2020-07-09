@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,37 +9,31 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  title = 'Modal Login Form';
+  form: FormGroup;
 
-  loginForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
   }
 
   createForm() {
-    this.loginForm = this.formBuilder.group({
+    this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
-  submit() {
-    console.log(this.loginForm.value);
-  }
-
-  saveMy() {
-    const user = JSON.parse(localStorage.getItem('authen'));
-    if (user.filter((user) => this.loginForm.get('user'))) {
-      console.log('OK');
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: "Passwords Don't Match",
-      });
+  login() {
+    const username = this.form.get('username').value;
+    const password = this.form.get('password').value;
+    this.authService.login(username, password);
+    if (this.authService.isAuthenticate){
+      this.router.navigate(['/home/list']);
     }
   }
 }
