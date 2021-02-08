@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+// import { ProfileComponent } from './profile/profile.component';
 
 const mat = [
   MatInputModule,
@@ -19,6 +20,7 @@ const mat = [
 ];
 
 @NgModule({
+  // declarations: [AppComponent, LoginComponent, RegisterComponent, ProfileComponent],
   declarations: [AppComponent, LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
